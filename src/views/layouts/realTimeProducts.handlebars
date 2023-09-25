@@ -1,0 +1,43 @@
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/socket.js"></script>
+
+<h1>¡Agrega un nuevo producto a la lista!</h1>
+<form id="productsForm" action="/products" method="post">
+<label for="title">Nombre del producto:</label>
+<input type="text" name="title"/>
+
+<label for="description">Descripcion:</label>
+<input type="text" name="description"/>
+
+<label for="price">Precio:</label>
+<input type="text" name="price"/>
+
+<label for="thumbnail">Link de la imagen del producto:</label>
+<input type="text" name="thumbnail"/>
+
+<label for="code">Codigo de producto:</label>
+<input type="text" name="code"/>
+
+<label for="stock">Stock:</label>
+<input type="text" name="stock"/>
+
+<label for="category">Categoria del producto:</label>
+<input type="text" name="category"/>
+
+<input onclick="productCreated()" type="submit" value="Crear producto"/>
+</form>
+
+<h1>Lista de productos disponibles:</h1>
+<div id="productList">
+{{#each products}}
+  <div>
+    <b>Producto {{this.id}}</b>
+    <ul>
+      <li>Nombre: {{this.title}}</li>
+      <li>Descripcion: {{this.description}}</li>
+      <li>Precio: {{this.price}}</li>
+    </ul>
+    <button id={{this.id}} onclick="productDeleted()">Eliminar producto</button>
+  </div>
+{{/each}}
+</div>
